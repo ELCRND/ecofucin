@@ -734,6 +734,10 @@ body {
 }
 
 @media screen and (max-width: 767px) {
+  .benefits-section {
+    justify-content: start;
+  }
+
   .benefits-section .section-title {
     font-size: 24px;
     line-height: 100%;
@@ -908,6 +912,10 @@ body {
 }
 
 @media (max-width: 767px) {
+  .usage-container {
+    justify-content: start;
+  }
+
   .usage-title {
     font-size: 24px;
   }
@@ -1091,6 +1099,10 @@ body {
 }
 
 @media (max-width: 767px) {
+  .thrush-section {
+    align-items: start;
+  }
+
   .thrush-section .section-title {
     font-size: 24px;
     line-height: 100%;
@@ -1232,6 +1244,10 @@ body {
 }
 
 @media (max-width: 767px) {
+  .symptoms-container {
+    justify-content: start;
+  }
+
   .symptoms-section .section-title {
     margin-top: 0;
     font-size: 24px;
@@ -1368,6 +1384,10 @@ body {
 }
 
 @media (max-width: 767px) {
+  .importance-section {
+    justify-content: start;
+  }
+
   .importance-section .section-title {
     font-size: 24px;
     line-height: 100%;
@@ -1492,6 +1512,10 @@ body {
 }
 
 @media (max-width: 767px) {
+  .treatment-section {
+    align-items: start;
+  }
+
   .treatment-section .section-title {
     font-size: 24px;
     line-height: 120%;
@@ -1703,6 +1727,10 @@ body {
 }
 
 @media (max-width: 767px) {
+  .effectiveness-section {
+    align-items: start;
+  }
+
   .effectiveness-card {
     flex: 0 0 100%;
   }
