@@ -60,17 +60,6 @@ slider.addEventListener("touchend", () => {
   }
 });
 
-// Обработчики для навигационных ссылок
-navLinks.forEach((link) => {
-  link.addEventListener("click", (e) => {
-    e.preventDefault();
-    menu.classList.remove("open");
-    menuBtn.classList.remove("open");
-    const slideNum = +link.getAttribute("data-slide");
-    goToSlide(slideNum);
-  });
-});
-
 function goToSlide(index) {
   if (index < 0 || index >= slides.length) return;
   if (index == 2 || index == 6) {
@@ -81,17 +70,9 @@ function goToSlide(index) {
   currentSlide = index;
   const offset = -currentSlide * 100;
   slider.style.transform = `translateY(${offset}vh)`;
-
-  navLinks.forEach((link) => {
-    link.classList.toggle(
-      "active",
-      link.getAttribute("data-slide") == currentSlide
-    );
-  });
 }
 
 // горизонтальный слайдер в блоке effectiveness
-
 let currentIndex = 0;
 
 function updateSlider() {
