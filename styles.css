@@ -1091,10 +1091,6 @@ body {
 }
 
 @media (max-width: 767px) {
-  .thrush-section {
-    padding-bottom: 70px;
-  }
-
   .thrush-section .section-title {
     font-size: 24px;
     line-height: 100%;
@@ -1362,10 +1358,6 @@ body {
 }
 
 @media (max-width: 1023px) {
-  .importance-section {
-    padding-bottom: 70px;
-  }
-
   .importance-content {
     flex-direction: column;
   }
