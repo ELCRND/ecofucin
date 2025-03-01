@@ -530,7 +530,7 @@ body {
 
   .hero-product-img {
     translate: 0 0;
-    bottom: 40px;
+    bottom: 50px;
     left: auto;
     right: 10px;
   }
@@ -719,7 +719,7 @@ body {
 
 @media screen and (max-width: 767px) {
   .benefits-section {
-    padding-top: 50px;
+    justify-content: start;
   }
 
   .benefits-section .section-title {
@@ -896,8 +896,8 @@ body {
 }
 
 @media (max-width: 767px) {
-  .usage-section {
-    padding-bottom: 70px;
+  .usage-container {
+    justify-content: start;
   }
   .usage-title {
     font-size: 24px;
@@ -1227,8 +1227,8 @@ body {
 }
 
 @media (max-width: 767px) {
-  .symptoms-section {
-    padding-bottom: 70px;
+  .symptoms-container {
+    justify-content: start;
   }
 
   .symptoms-section .section-title {
@@ -1350,7 +1350,7 @@ body {
   margin-top: 50px;
 }
 
-.importance-source {
+.importance-num {
   font-size: 0.6em;
   line-height: 180%;
   vertical-align: top;
@@ -1711,6 +1711,10 @@ body {
 }
 
 @media (max-width: 767px) {
+  .effectiveness-section {
+    align-items: start;
+  }
+
   .effectiveness-card {
     flex: 0 0 100%;
   }
