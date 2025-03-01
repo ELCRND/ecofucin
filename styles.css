@@ -83,6 +83,10 @@ body {
   width: 100%;
 }
 
+.main-header.accent-bg {
+  background-color: #325e18;
+}
+
 .header-container {
   width: min(100%, 1220px);
   min-height: 70px;
@@ -513,34 +517,54 @@ body {
 }
 @media screen and (max-width: 767px) {
   .hero-section {
-    padding-top: 0;
+    position: relative;
+  }
+
+  .hero-container {
+    align-items: start;
+  }
+
+  .hero-content {
+    position: static;
   }
 
   .hero-product-img {
-    translate: 0 -50%;
-    bottom: 0;
-    left: 0;
+    translate: 0 0;
+    bottom: 40px;
+    left: auto;
+    right: 10px;
+  }
+
+  .hero-woman-img {
+    right: auto;
+    left: 10px;
   }
 
   .scroll-hint {
-    margin-top: 200px;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 16px;
   }
 
   .hero-title {
     font-size: 24px;
-    line-height: 24px;
+    line-height: 120%;
+    text-align: center;
   }
 
   .hero-subtitle {
     margin-top: 20px;
-    font-size: 32px;
-    line-height: 32px;
+    font-size: 28px;
+    line-height: 100%;
+    text-align: center;
   }
 
   .hero-buy-btn {
     width: 42px;
     border-radius: 20px 0 0 20px;
     font-size: 16px;
+    translate: 0 -50%;
   }
 }
 
@@ -863,7 +887,18 @@ body {
   text-align: center;
 }
 
+@media (max-width: 1023px) {
+  .usage-images {
+    flex-direction: column;
+    flex-grow: 1;
+    align-items: center;
+  }
+}
+
 @media (max-width: 767px) {
+  .usage-section {
+    padding-bottom: 70px;
+  }
   .usage-title {
     font-size: 24px;
   }
@@ -1047,6 +1082,10 @@ body {
 }
 
 @media (max-width: 767px) {
+  .thrush-section {
+    padding-bottom: 70px;
+  }
+
   .thrush-section .section-title {
     font-size: 24px;
     line-height: 100%;
@@ -1188,6 +1227,10 @@ body {
 }
 
 @media (max-width: 767px) {
+  .symptoms-section {
+    padding-bottom: 70px;
+  }
+
   .symptoms-section .section-title {
     margin-top: 0;
     font-size: 24px;
@@ -1207,7 +1250,7 @@ body {
 
   .symptoms-list li {
     width: 320px;
-    min-height: 120px;
+    min-height: 100px;
     padding-left: 20px;
     padding-right: 20px;
     border-radius: 20px;
@@ -1314,6 +1357,10 @@ body {
 }
 
 @media (max-width: 1023px) {
+  .importance-section {
+    padding-bottom: 70px;
+  }
+
   .importance-content {
     flex-direction: column;
   }
@@ -1448,6 +1495,11 @@ body {
 }
 
 @media (max-width: 767px) {
+  .treatment-section {
+    padding-bottom: 70px;
+    align-items: start;
+  }
+
   .treatment-section .section-title {
     font-size: 24px;
     line-height: 120%;
@@ -1495,11 +1547,11 @@ body {
 }
 
 .effectiveness-container {
-  width: min(100%, 1220px);
+  width: min(100%, 1200px);
   margin-left: auto;
   margin-right: auto;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .effectiveness-section .section-title {
@@ -1511,11 +1563,17 @@ body {
   text-align: center;
 }
 
-.effectiveness-content {
+.effectiveness-slider {
   margin-top: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.effectiveness-slides {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  transition: transform 0.5s ease-in-out;
 }
 
 .effectiveness-card {
@@ -1523,6 +1581,36 @@ body {
   flex-direction: column;
   align-items: center;
   text-align: center;
+}
+
+.effectiveness-card p {
+  max-width: 333px;
+}
+
+.prev,
+.next {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 100%;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 24px;
+  line-height: 1;
+  display: none;
+}
+
+.prev {
+  left: 0;
+}
+
+.next {
+  right: 0;
 }
 
 .effectiveness-card img {
@@ -1603,4 +1691,31 @@ body {
   position: absolute;
   top: 15px;
   left: 10px;
+}
+
+@media (max-width: 1079px) {
+  .effectiveness-slides {
+    align-items: start;
+  }
+
+  .prev,
+  .next {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .effectiveness-card {
+    flex: 0 0 50%;
+  }
+}
+
+@media (max-width: 767px) {
+  .effectiveness-card {
+    flex: 0 0 100%;
+  }
+  .effectiveness-section .section-title {
+    font-size: 24px;
+    line-height: 120%;
+  }
 }
