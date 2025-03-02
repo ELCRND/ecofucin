@@ -1898,6 +1898,7 @@ body.visible {
   height: 100vh !important;
   translate: 0 0;
   position: relative;
+  overscroll-behavior: contain;
 }
 
 .page-footer {
