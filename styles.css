@@ -17,29 +17,34 @@ a {
   transition: 0.2s;
 }
 
-body,
-html {
-  height: 100%;
-  overflow: hidden;
-}
-
 body {
   position: relative;
   background-color: #ffffff;
   margin: 0;
   padding: 0;
   font-family: var(--font-family);
+  height: 100%;
+  overflow: hidden;
+}
+
+body.visible {
+  overflow: visible;
 }
 
 .slider-container {
   height: 100vh;
   overflow: hidden;
   position: relative;
+  touch-action: pan-y;
+}
+.slider-container.off {
+  overflow: visible;
 }
 
 .slider {
   display: flex;
   flex-direction: column;
+  touch-action: pan-y;
 }
 
 .slide {
@@ -239,6 +244,58 @@ body {
   flex-shrink: 0;
 }
 
+.header-buy-btn {
+  height: 181px;
+  width: 63px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff701;
+  border-radius: 30px 0 0 30px;
+  position: absolute;
+  top: 50vh;
+  right: 0;
+  z-index: 10;
+}
+
+.header-buy-btn:hover img {
+  animation: rotate 2s linear infinite;
+}
+
+@keyframes rotate {
+  0%,
+  50%,
+  100% {
+    rotate: 0deg;
+  }
+  25% {
+    rotate: -20deg;
+  }
+
+  75% {
+    rotate: 20deg;
+  }
+}
+
+.header-buy-btn span {
+  font-family: var(--font-family);
+  font-weight: 300;
+  font-size: 18px;
+  text-align: center;
+  color: #20400d;
+  text-wrap: nowrap;
+  transform: rotate(-90deg);
+  translate: 2% -90%;
+}
+
+.header-buy-btn img {
+  position: absolute;
+  bottom: 30px;
+  right: 50%;
+  translate: 60% 0;
+}
+
 @media screen and (max-width: 1023px) {
   .main-nav {
     text-transform: capitalize;
@@ -304,6 +361,13 @@ body {
     width: 12px;
     height: 16px;
   }
+
+  .header-buy-btn {
+    width: 42px;
+    border-radius: 20px 0 0 20px;
+    font-size: 16px;
+    translate: 0 -50%;
+  }
 }
 
 /* Hero section */
@@ -324,58 +388,6 @@ body {
   position: absolute;
   inset: 0;
   z-index: 0;
-}
-
-.hero-buy-btn {
-  height: 181px;
-  width: 63px;
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #fff701;
-  border-radius: 30px 0 0 30px;
-  position: absolute;
-  top: 50%;
-  right: 0;
-  z-index: 3;
-}
-
-.hero-buy-btn:hover img {
-  animation: rotate 2s linear infinite;
-}
-
-@keyframes rotate {
-  0%,
-  50%,
-  100% {
-    rotate: 0deg;
-  }
-  25% {
-    rotate: -20deg;
-  }
-
-  75% {
-    rotate: 20deg;
-  }
-}
-
-.hero-buy-btn span {
-  font-family: var(--font-family);
-  font-weight: 300;
-  font-size: 18px;
-  text-align: center;
-  color: #20400d;
-  text-wrap: nowrap;
-  transform: rotate(-90deg);
-  translate: 2% -100%;
-}
-
-.hero-buy-btn img {
-  position: absolute;
-  bottom: 30px;
-  right: 50%;
-  translate: 50% 0;
 }
 
 .hero-container {
@@ -574,13 +586,6 @@ body {
     font-size: 28px;
     line-height: 100%;
     text-align: center;
-  }
-
-  .hero-buy-btn {
-    width: 42px;
-    border-radius: 20px 0 0 20px;
-    font-size: 16px;
-    translate: 0 -50%;
   }
 }
 
@@ -1243,6 +1248,12 @@ body {
   user-select: none;
 }
 
+@media (max-width: 1023px) {
+  .symptoms-img {
+    left: -130px;
+  }
+}
+
 @media (max-width: 767px) {
   .symptoms-container {
     justify-content: start;
@@ -1272,6 +1283,10 @@ body {
     padding-right: 20px;
     border-radius: 20px;
     font-size: 16px;
+  }
+
+  .symptoms-img {
+    display: none;
   }
 }
 
@@ -1603,6 +1618,10 @@ body {
   max-width: 333px;
 }
 
+.effectiveness-content {
+  padding-bottom: 70px;
+}
+
 .prev,
 .next {
   width: 40px;
@@ -1619,14 +1638,17 @@ body {
   font-size: 24px;
   line-height: 1;
   display: none;
+  top: 90%;
 }
 
 .prev {
-  left: 0;
+  left: 50%;
+  translate: -150% 0;
 }
 
 .next {
-  right: 0;
+  right: 50%;
+  translate: 150% 0;
 }
 
 .effectiveness-card img {
@@ -1737,5 +1759,194 @@ body {
   .effectiveness-section .section-title {
     font-size: 24px;
     line-height: 120%;
+  }
+
+  .prev {
+    top: 90%;
+    left: 50%;
+    translate: -300% 0;
+  }
+
+  .next {
+    top: 90%;
+    right: 50%;
+    translate: 300% 0;
+  }
+}
+
+.page-footer {
+  width: 100vw;
+  padding-top: 70px;
+  padding-bottom: 150px;
+  height: 100vh !important;
+  translate: 0 0;
+  position: relative;
+}
+
+.page-footer {
+  border-top: 1px solid #e8eeef;
+}
+
+.page-footer__inner {
+  width: 320px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 14px;
+  padding-bottom: 30px;
+  padding-top: 30px;
+}
+
+.page-footer__inner ul {
+  padding-left: 40px;
+}
+
+.page-footer__inner p {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.page-footer__inner a {
+  color: #232323;
+  text-decoration: underline;
+  text-decoration-color: rgba(35, 35, 35, 0.3);
+}
+
+.page-footer__inner a:hover {
+  text-decoration-color: rgba(35, 35, 35, 0);
+}
+
+.page-footer__privacy-policy {
+  width: 100%;
+}
+
+.page-footer__forma {
+  width: 100%;
+  padding-top: 10px;
+}
+
+.page-footer__site-info {
+  margin-top: 14px;
+  width: 100%;
+}
+
+.page-footer__contraindications {
+  width: 100%;
+  color: #bac3c5;
+  flex-basis: 100%;
+  font: 300 21px "Yanone Kaffeesatz", sans-serif;
+  letter-spacing: -2px;
+  margin-top: 40px;
+  max-width: 100%;
+  text-align: center;
+  text-transform: uppercase;
+  line-height: 110%;
+}
+
+.page-footer__contraindications span {
+  display: block;
+  font-size: 33px;
+}
+
+@media (min-width: 768px) {
+  .page-footer {
+    height: 50vh !important;
+    translate: 0 50%;
+  }
+
+  .page-footer__inner {
+    width: 750px;
+  }
+
+  .page-header__nav-mobile {
+    display: none;
+  }
+  .page-header__logo {
+    margin-right: 5%;
+  }
+  .page-header__nav {
+    display: block;
+    left: auto;
+    position: relative;
+    top: auto;
+    width: auto;
+  }
+  .page-header__where-buy {
+    position: absolute;
+    right: 0;
+    top: 60px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .page-header__where-buy-link {
+    background-color: #60b124;
+    border-radius: 32px;
+    display: inline-block;
+    font-size: 18px;
+    height: 46px;
+    line-height: 46px;
+    margin: 5px 0 10px auto;
+    padding: 0 24px;
+    width: auto;
+    min-width: 50%;
+  }
+  .page-header__where-buy-link img {
+    display: inline-block;
+  }
+  .page-header__where-buy-link:hover {
+    background-color: #67ba29;
+    color: #fff;
+  }
+  .page-header__where-buy-mobile {
+    display: none;
+  }
+  .page-content__section {
+    margin-bottom: 20px;
+  }
+  .page-content__section--pregnancy {
+    background-image: url(/local/templates/ecofucin.ru/images/pregnancy__woman.png);
+    background-position: calc(100% + 135px) -76px;
+    background-repeat: no-repeat;
+  }
+
+  .page-footer__privacy-policy {
+    width: 35%;
+  }
+  .page-footer__forma {
+    width: 100%;
+    padding-top: 20px;
+  }
+  .page-footer__site-info {
+    margin: 0;
+    text-align: right;
+    width: 65%;
+  }
+  .page-footer__contraindications {
+    font-size: 30px;
+    margin-top: 22px;
+  }
+  .page-footer__contraindications span {
+    display: inline;
+    font-size: inherit;
+  }
+}
+
+@media (min-width: 992px) {
+  .page-footer__inner {
+    width: 970px;
+  }
+  .page-footer__contraindications {
+    font-size: 48px;
+    letter-spacing: -3px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .page-footer__inner {
+    width: 1170px;
   }
 }

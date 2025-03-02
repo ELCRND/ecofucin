@@ -2,11 +2,13 @@ const header = document.querySelector(".main-header");
 const menu = document.querySelector(".main-nav");
 const menuBtn = document.querySelector(".header-menu-btn");
 const navLinks = document.querySelectorAll(".nav-item a");
+const sliderContainer = document.querySelector(".slider-container");
 const slider = document.querySelector(".slider");
 const slides = document.querySelectorAll(".slide");
 const effectivenessSlides = document.querySelector(".effectiveness-slides");
 const prevButton = document.querySelector(".prev");
 const nextButton = document.querySelector(".next");
+const footer = document.querySelector(".page-footer");
 
 // Открыть/закрыть меню
 menuBtn.addEventListener("click", () => {
@@ -33,6 +35,18 @@ const swipeThreshold = 80; // необходимая длина свайпа д�
 // Обработчик скролла
 window.addEventListener("wheel", (e) => {
   if (isScrolling) return; // debounce
+
+  // if (currentSlide === slides.length - 1 && e.deltaY > 0) {
+  //   footer.classList.remove("slide");
+  //   sliderContainer.classList.add("off");
+  //   document.body.classList.add("visible");
+  //   return;
+  // } else if (currentSlide === slides.length - 1 && e.deltaY < 0) {
+  //   footer.classList.add("slide");
+  //   sliderContainer.classList.remove("visible");
+  //   document.body.classList.remove("visible");
+  // }
+
   isScrolling = true;
 
   e.deltaY > 0 ? goToSlide(currentSlide + 1) : goToSlide(currentSlide - 1);
@@ -51,6 +65,7 @@ slider.addEventListener("touchmove", (e) => {
 });
 
 slider.addEventListener("touchend", () => {
+  if (endY === 0) return;
   const deltaY = startY - endY;
 
   if (deltaY > swipeThreshold) {
@@ -58,6 +73,8 @@ slider.addEventListener("touchend", () => {
   } else if (deltaY < -swipeThreshold) {
     goToSlide(currentSlide - 1);
   }
+
+  endY = 0;
 });
 
 function goToSlide(index) {
