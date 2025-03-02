@@ -64,9 +64,20 @@ slider.addEventListener("touchmove", (e) => {
   endY = e.touches[0].clientY;
 });
 
-slider.addEventListener("touchend", () => {
+slider.addEventListener("touchend", (e) => {
   if (endY === 0) return;
   const deltaY = startY - endY;
+
+  if (currentSlide === slides.length - 1 && deltaY > 0) {
+    footer.classList.remove("slide");
+    sliderContainer.classList.add("off");
+    document.body.classList.add("visible");
+    return;
+  } else if (currentSlide === slides.length - 1 && deltaY < 0) {
+    footer.classList.add("slide");
+    sliderContainer.classList.remove("visible");
+    document.body.classList.remove("visible");
+  }
 
   if (deltaY > swipeThreshold) {
     goToSlide(currentSlide + 1);
