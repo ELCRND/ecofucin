@@ -83,14 +83,9 @@ slider.addEventListener("touchstart", (e) => {
   startY = e.touches[0].clientY;
 });
 
-slider.addEventListener(
-  "touchmove",
-  (e) => {
-    e.preventDefault();
-    endY = e.touches[0].clientY;
-  },
-  { passive: false }
-);
+slider.addEventListener("touchmove", (e) => {
+  endY = e.touches[0].clientY;
+});
 
 slider.addEventListener("touchend", (e) => {
   if (endY === 0) return;
