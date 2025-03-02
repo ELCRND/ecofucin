@@ -25,6 +25,7 @@ body {
   font-family: var(--font-family);
   height: 100%;
   overflow: hidden;
+  overscroll-behavior: contain;
 }
 
 body.visible {
@@ -1898,7 +1899,6 @@ body.visible {
   height: 100vh !important;
   translate: 0 0;
   position: relative;
-  
 }
 
 .page-footer {
