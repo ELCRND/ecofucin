@@ -9,6 +9,28 @@ const effectivenessSlides = document.querySelector(".effectiveness-slides");
 const prevButton = document.querySelector(".prev");
 const nextButton = document.querySelector(".next");
 const footer = document.querySelector(".page-footer");
+const footerAnchor = document.querySelector(".footer-anchor");
+
+let swipeOff = false;
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        console.log(1);
+        swipeOff = false;
+      } else {
+        console.log(2);
+        swipeOff = true;
+      }
+    });
+  },
+  {
+    root: null,
+    threshold: 1.0,
+  }
+);
+
+observer.observe(footerAnchor);
 
 // Открыть/закрыть меню
 menuBtn.addEventListener("click", () => {
@@ -42,6 +64,7 @@ window.addEventListener("wheel", (e) => {
     document.body.classList.add("visible");
     return;
   } else if (currentSlide === slides.length - 1 && e.deltaY < 0) {
+    if (swipeOff) return;
     footer.classList.add("slide");
     sliderContainer.classList.remove("visible");
     document.body.classList.remove("visible");
@@ -74,6 +97,7 @@ slider.addEventListener("touchend", (e) => {
     document.body.classList.add("visible");
     return;
   } else if (currentSlide === slides.length - 1 && deltaY < 0) {
+    if (swipeOff) return;
     footer.classList.add("slide");
     sliderContainer.classList.remove("visible");
     document.body.classList.remove("visible");
