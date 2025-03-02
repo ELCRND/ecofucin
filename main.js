@@ -36,16 +36,16 @@ const swipeThreshold = 80; // необходимая длина свайпа д�
 window.addEventListener("wheel", (e) => {
   if (isScrolling) return; // debounce
 
-  // if (currentSlide === slides.length - 1 && e.deltaY > 0) {
-  //   footer.classList.remove("slide");
-  //   sliderContainer.classList.add("off");
-  //   document.body.classList.add("visible");
-  //   return;
-  // } else if (currentSlide === slides.length - 1 && e.deltaY < 0) {
-  //   footer.classList.add("slide");
-  //   sliderContainer.classList.remove("visible");
-  //   document.body.classList.remove("visible");
-  // }
+  if (currentSlide === slides.length - 1 && e.deltaY > 0) {
+    footer.classList.remove("slide");
+    sliderContainer.classList.add("off");
+    document.body.classList.add("visible");
+    return;
+  } else if (currentSlide === slides.length - 1 && e.deltaY < 0) {
+    footer.classList.add("slide");
+    sliderContainer.classList.remove("visible");
+    document.body.classList.remove("visible");
+  }
 
   isScrolling = true;
 

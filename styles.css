@@ -1776,8 +1776,7 @@ body.visible {
 
 .page-footer {
   width: 100vw;
-  padding-top: 70px;
-  padding-bottom: 150px;
+  padding-top: 90px;
   height: 100vh !important;
   translate: 0 0;
   position: relative;
@@ -1797,7 +1796,7 @@ body.visible {
   display: flex;
   flex-wrap: wrap;
   font-size: 14px;
-  padding-bottom: 30px;
+  padding-bottom: 150px;
   padding-top: 30px;
 }
 
