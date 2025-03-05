@@ -16,10 +16,8 @@ const observer = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        console.log(1);
         swipeOff = false;
       } else {
-        console.log(2);
         swipeOff = true;
       }
     });
@@ -54,32 +52,27 @@ let startY = 0;
 let endY = 0;
 const swipeThreshold = 80; // необходимая длина свайпа для скролла на тач устройствах
 
-// Обработчик скролла
-window.addEventListener("wheel", handleScroll);
+function isMobileDevice() {
+  return (
+    window.matchMedia("(min-width: 480px)").matches &&
+    window.matchMedia("(max-width: 1023px)").matches
+  );
+}
 
 function handleOrientationChange() {
-  const orientation = screen.orientation.type;
-
-  if (
-    orientation === "landscape-primary" ||
-    orientation === "landscape-secondary"
-  ) {
-    console.log("Ландшафтный режим");
+  if (isMobileDevice()) {
+    console.log("landscape");
     window.removeEventListener("wheel", handleScroll);
     slider.removeEventListener("touchend", handleTouch);
-  } else if (
-    orientation === "portrait-primary" ||
-    orientation === "portrait-secondary"
-  ) {
-    console.log("Портретный режим");
+    slider.style.transform = `translateY(0)`;
+  } else {
+    console.log("portrait");
     window.addEventListener("wheel", handleScroll);
     slider.addEventListener("touchend", handleTouch);
   }
 }
 
-window.addEventListener("orientationchange", handleOrientationChange);
-
-// Инициализация обработчиков при загрузке страницы
+window.addEventListener("resize", handleOrientationChange);
 handleOrientationChange();
 
 function handleScroll(e) {
@@ -113,8 +106,6 @@ slider.addEventListener("touchstart", (e) => {
 slider.addEventListener("touchmove", (e) => {
   endY = e.touches[0].clientY;
 });
-
-slider.addEventListener("touchend", handleTouch);
 
 function handleTouch() {
   if (endY === 0) return;

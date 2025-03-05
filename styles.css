@@ -2070,7 +2070,7 @@ body.visible {
   }
 }
 
-@media screen and (orientation: landscape) {
+@media screen and (min-width: 480px) and (max-width: 1023px) {
   body {
     overflow: visible;
   }
@@ -2083,10 +2083,25 @@ body.visible {
     padding-bottom: 30px;
   }
   .hero-section {
-    min-height: 150vh;
     padding-top: 100px;
+    min-height: 65vh;
+    display: flex;
+    align-items: start;
+  }
+  .hero-container {
+    position: static;
   }
   .hero-woman-img {
-    translate: 0 40%;
+    translate: 0 5%;
+  }
+}
+
+@media screen and (min-width: 480px) and (max-width: 1023px) and (orientation: landscape) {
+  .hero-section {
+    min-height: 150vh;
+    align-items: start;
+  }
+  .hero-woman-img {
+    translate: 0 20%;
   }
 }
