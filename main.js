@@ -55,7 +55,34 @@ let endY = 0;
 const swipeThreshold = 80; // необходимая длина свайпа для скролла на тач устройствах
 
 // Обработчик скролла
-window.addEventListener("wheel", (e) => {
+window.addEventListener("wheel", handleScroll);
+
+function handleOrientationChange() {
+  const orientation = screen.orientation.type;
+
+  if (
+    orientation === "landscape-primary" ||
+    orientation === "landscape-secondary"
+  ) {
+    console.log("Ландшафтный режим");
+    window.removeEventListener("wheel", handleScroll);
+    slider.removeEventListener("touchend", handleTouch);
+  } else if (
+    orientation === "portrait-primary" ||
+    orientation === "portrait-secondary"
+  ) {
+    console.log("Портретный режим");
+    window.addEventListener("wheel", handleScroll);
+    slider.addEventListener("touchend", handleTouch);
+  }
+}
+
+window.addEventListener("orientationchange", handleOrientationChange);
+
+// Инициализация обработчиков при загрузке страницы
+handleOrientationChange();
+
+function handleScroll(e) {
   if (isScrolling) return; // debounce
 
   if (currentSlide === slides.length - 1 && e.deltaY > 0) {
@@ -77,7 +104,7 @@ window.addEventListener("wheel", (e) => {
   setTimeout(() => {
     isScrolling = false;
   }, 500);
-});
+}
 
 slider.addEventListener("touchstart", (e) => {
   startY = e.touches[0].clientY;
@@ -87,7 +114,9 @@ slider.addEventListener("touchmove", (e) => {
   endY = e.touches[0].clientY;
 });
 
-slider.addEventListener("touchend", (e) => {
+slider.addEventListener("touchend", handleTouch);
+
+function handleTouch() {
   if (endY === 0) return;
   const deltaY = startY - endY;
 
@@ -110,7 +139,7 @@ slider.addEventListener("touchend", (e) => {
   }
 
   endY = 0;
-});
+}
 
 function goToSlide(index) {
   if (index < 0 || index >= slides.length) return;

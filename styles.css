@@ -2069,3 +2069,24 @@ body.visible {
     width: 1170px;
   }
 }
+
+@media screen and (orientation: landscape) {
+  body {
+    overflow: visible;
+  }
+  .slider-container {
+    overflow: visible;
+  }
+  .slide {
+    width: 100%;
+    height: auto;
+    padding-bottom: 30px;
+  }
+  .hero-section {
+    min-height: 150vh;
+    padding-top: 100px;
+  }
+  .hero-woman-img {
+    translate: 0 40%;
+  }
+}
